@@ -189,6 +189,7 @@
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-dev-expression": "^0.2.2",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "browserslist-config-erb": "^0.0.1",
     "chalk": "^4.1.1",
@@ -246,14 +247,22 @@
     "yarn-deduplicate": "^3.1.0"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "classnames": "^2.2.6",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.3.5",
     "electron-updater": "^4.3.8",
+    "express": "^4.17.1",
     "history": "4.x.x",
+    "howler": "^2.2.1",
+    "lodash": "^4.17.20",
+    "play": "^0.5.0",
     "react": "^17.0.2",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "web-vitals": "^0.2.4"
   },
   "devEngines": {
     "node": ">=10.x",

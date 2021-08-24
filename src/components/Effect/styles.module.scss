@@ -1,0 +1,90 @@
+.key {
+  font-size: 0.9vw;
+  position: absolute;
+  right: 6px;
+  top: 4px;
+}
+
+.name {
+  font-size: 1.1vw;
+  font-weight: bold;
+
+  &:nth-child(2) {
+    margin-top: 6px;
+  }
+
+  &:last-child {
+    color: #ccc;
+    font-size: 0.85vw;
+    text-transform: uppercase;
+  }
+}
+
+.effectButton {
+  align-items: center;
+  background: #353b4c;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 7vw;
+  justify-content: center;
+  margin: 0 0.5vw;
+  padding: 4px;
+  position: relative;
+  width: 7vw;
+
+  &:after {
+    background: rgba(0,0,0,0);
+    border-radius: 8px;
+    content: "";
+    height: 100%;
+    position: absolute;
+    transition: background 0.3s;
+    width: 100%;
+  }
+
+  &:hover:after {
+    background: rgba(0,0,0,0.15);
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.editMode {
+  background: white !important;
+  border: 2px solid #888;
+  color: black;
+}
+
+.isActive {
+  // border: 2px solid greenyellow !important;
+  background: #36446c !important;
+}
+
+@media (min-width: 1280px) {
+  .effectButton {
+    height: 100px;
+    margin: 8px;
+    width: 100px;
+  }
+
+  .name {
+    font-size: 14px;
+
+    &:last-child {
+      color: #ccc;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+
+  .key {
+    font-size: 12px;
+  }
+}

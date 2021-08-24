@@ -20,5 +20,10 @@
     "test/**/__snapshots__": true,
     "yarn.lock": true,
     "*.{css,sass,scss}.d.ts": true
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#17207C",
+    "titleBar.activeBackground": "#202DAE",
+    "titleBar.activeForeground": "#FBFBFE"
   }
 }
