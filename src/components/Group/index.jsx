@@ -12,8 +12,7 @@ const Group = (props) => {
     effects,
     isEditMode,
     setActiveGroup,
-    setActiveModal,
-    folders,
+    setActiveModal
   } = useContext(BoardContext);
   const label = effects[keymap].label;
 

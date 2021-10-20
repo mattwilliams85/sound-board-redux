@@ -18,13 +18,15 @@ const Effect = props => {
     setActiveKey,
     playEffect
   } = useContext(BoardContext);
-  const effect = effects[activeGroup][keymap] || {
+  const defaultValues = {
     keymap,
     color: { hex: '#353b4c' },
     label: '',
     id: '='
   };
-
+  const folder = effects[activeGroup].label
+  const effect = effects[folder] ? effects[folder][keymap] || defaultValues : defaultValues;
+  const fileName = effect.file ? effect.file.replace(/\.[^/.]+$/, "") : ''
   useEffect(() => {
     if (`${activeGroup}_${activeKey}` === effect.id) {
       if (loopActive) setIsLocked(isLocked ? null : activeGroup);
@@ -74,8 +76,8 @@ const Effect = props => {
       onClick={handleOnClick}
     >
       <div className={styles.key}>{formatKey(effect.keymap)}</div>
-      <div className={styles.name}>{effect.label}</div>
-      <div className={styles.name}>{effect.sublabel}</div>
+      <div className={styles.name}>{fileName.split(' ')[0]}</div>
+      <div className={styles.name}>{fileName.split(' ')[1]}</div>
     </div>
   );
 };

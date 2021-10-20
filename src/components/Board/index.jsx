@@ -33,6 +33,7 @@ const Board = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [activeGroup, setActiveGroup] = useState(effects.activeGroup || 0);
   const [folders, setFolders] = useState([]);
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -47,6 +48,16 @@ const Board = () => {
   useEffect(() => {
     getFolderNames();
   }, []);
+
+  useEffect(() => {
+    getFileNames(effects[activeGroup].label)
+    folders.forEach(name => {
+      if (!effects[name]) {
+        effects[name] = {};
+        localStorage.setItem('effects', JSON.stringify(effects));
+      }
+    })
+  }, [folders, activeGroup])
 
   useEffect(() => {
     localStorage.setItem(
@@ -66,8 +77,22 @@ const Board = () => {
     setFolders(names);
   }
 
+  function getFileNames(folderName) {
+    if (!folderName) return [];
+
+    const names = [];
+
+    fs.readdir(`./src/audio/${folderName}`, (err, files) => {
+      files.forEach((file) => {
+        if (file[0] !== '.') names.push(file);
+      });
+    });
+    setFiles(names);
+  }
+
   function playEffect(keymap) {
-    const effect = effects[activeGroup][keymap];
+    const folder = effects[activeGroup].label
+    const effect = effects[folder][keymap];
 
     if (effect) {
       const path = getAudioPath(effect);
@@ -139,6 +164,7 @@ const Board = () => {
         setIsEditMode,
         playEffect,
         folders,
+        files
       }}
     >
       {isEditMode ? (

@@ -2,7 +2,7 @@ export const qwerty = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'],
-  ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/']
+  ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'],
 ];
 
 export const defaultEffects = {
@@ -15,7 +15,7 @@ export const defaultEffects = {
   6: {},
   7: {},
   8: {},
-  9: {}
+  9: {},
 };
 
 export const randomRates = [1, 0.8, 1.1, 0.9, 1.2, 1, 0.85, 1.3];
@@ -42,5 +42,5 @@ export const colors = [
   '#ff9800',
   '#ff5722',
   '#934a30',
-  '#eeeeee'
+  '#eeeeee',
 ];

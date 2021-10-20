@@ -8,6 +8,7 @@
 .name {
   font-size: 1.1vw;
   font-weight: bold;
+  text-transform: capitalize;
 
   &:nth-child(2) {
     margin-top: 6px;

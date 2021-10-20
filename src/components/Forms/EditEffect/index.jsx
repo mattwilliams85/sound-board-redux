@@ -9,7 +9,7 @@ import { BoardContext } from 'context/BoardContext';
 import { ReactComponent as IconTrash } from 'icons/trash-icon.svg';
 import styles from './styles.module.scss';
 
-const EditEffect = () => {
+const EditEffect = ({keymap}) => {
   const {
     activeGroup,
     activeModal,
@@ -17,14 +17,19 @@ const EditEffect = () => {
     setEffects,
     effects,
     setIsEditMode,
+    files,
+    folders
   } = useContext(BoardContext);
-  const effect = effects[activeGroup][activeModal] || {};
+  const folder = effects[activeGroup].label
+  const effect = effects[folder][activeModal] || {};
+
   const initialValues = {
-    label: '',
+    folder: folder,
+    file: files[0],
     keymap: '',
     color: { hex: '#de1bab' },
   };
-  const [values, setValues] = useState(effect.label ? effect : initialValues);
+  const [values, setValues] = useState(effect.file ? effect : initialValues);
 
   function handleChange(e) {
     const { target } = e;
@@ -46,7 +51,7 @@ const EditEffect = () => {
       preload: 'metadata',
       onload: (e) => {
         const duration = sound.duration();
-        effects[activeGroup][activeModal] = {
+        effects[folder][activeModal] = {
           ...values,
           duration,
           id: `${activeGroup}_${activeModal}`,
@@ -57,7 +62,7 @@ const EditEffect = () => {
   }
 
   function removeEffect() {
-    effects[activeGroup][activeModal] = undefined;
+    effects[folder] = undefined;
     updateEffects(effects);
   }
 
@@ -71,38 +76,28 @@ const EditEffect = () => {
 
   return (
     <>
-      {effect.label && (
+      {effect.file && (
         <IconTrash className={styles.trashIcon} onClick={removeEffect} />
       )}
       <h2>Edit {activeModal.toUpperCase()} Button</h2>
       <form onSubmit={addEffect}>
         <div className={styles.input}>
           <label>Music File</label>
-          <input
+          <select
             name="file"
             type="file"
-            onChange={(value) => handleChange(value)}
-            required={!values.file}
-          />
-        </div>
-        <div className={styles.input}>
-          <label>Label</label>
-          <input
-            maxLength={9}
-            name="label"
-            value={values.label}
+            value={values}
             onChange={(value) => handleChange(value)}
             required
-          />
-        </div>
-        <div className={styles.input}>
-          <label>Sublabel</label>
-          <input
-            maxLength={9}
-            name="sublabel"
-            value={values.sublabel}
-            onChange={(value) => handleChange(value)}
-          />
+          >
+            {files.map((name, index) => {
+              return (
+                <option key={name} value={name}>
+                  {name.replace(/\.[^/.]+$/, "")}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className={styles.input}>
           <label>Color</label>

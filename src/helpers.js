@@ -1,10 +1,7 @@
 let previous = 1;
 
 export function getAudioPath(effect) {
-  return effect.file.replace(
-    'C:\\fakepath\\',
-    `${process.env.PUBLIC_URL}/audio/`
-  );
+  return `src/audio/${effect.folder}/${effect.file}`;
 }
 
 export function generateUniqueRandom() {
