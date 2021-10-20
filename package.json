@@ -287,10 +287,5 @@
       }
     ],
     "singleQuote": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
